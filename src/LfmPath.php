@@ -277,7 +277,7 @@ class LfmPath
         $extension = $file->getClientOriginalExtension();
 
         if (config('lfm.rename_file') === true) {
-            $new_file_name = uniqid() . '_scrn';
+            $new_file_name = $new_file_name . '_' . uniqid() . '_scrn';
         } elseif (config('lfm.alphanumeric_filename') === true) {
             $new_file_name = preg_replace('/[^A-Za-z0-9\-\']/', '_', $new_file_name);
         }
