@@ -277,13 +277,13 @@ class LfmPath
         $extension = $file->getClientOriginalExtension();
 
         if (config('lfm.rename_file') === true) {
-            $new_file_name = uniqid() . '_img';
+            $new_file_name = uniqid() . '_scrn';
         } elseif (config('lfm.alphanumeric_filename') === true) {
             $new_file_name = preg_replace('/[^A-Za-z0-9\-\']/', '_', $new_file_name);
         }
 
         if ($extension) {
-            $new_file_name_with_extention = $new_file_name . '_img.' . $extension;
+            $new_file_name_with_extention = $new_file_name . '.' . $extension;
         }
 
         if (config('lfm.rename_duplicates') === true) {
@@ -295,7 +295,7 @@ class LfmPath
                 } else {
                     $suffix = " ({$counter})";
                 }
-                $new_file_name = $file_name_without_extentions.$suffix;
+                $new_file_name = $file_name_without_extentions.$suffix . '_scrn';
 
                 if ($extension) {
                     $new_file_name_with_extention = $new_file_name . '.' . $extension;
