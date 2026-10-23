@@ -366,7 +366,8 @@ class LfmPath
         $extension = $file->getClientOriginalExtension();
 
         if (config('lfm.rename_file') === true) {
-            $new_file_name = uniqid();
+            // screens_app: unique prefix, original name kept so a trailing _<seconds> still sets the display time
+            $new_file_name = uniqid() . '_' . preg_replace('/[^A-Za-z0-9_-]/', '_', $new_file_name);
         } elseif (config('lfm.alphanumeric_filename') === true) {
             $new_file_name = Str::slug($new_file_name);
         }
